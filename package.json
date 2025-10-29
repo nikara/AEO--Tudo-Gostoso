@@ -1,0 +1,24 @@
+{
+  "name": "aeo--tudo-gostoso",
+  "version": "1.0.0",
+  "description": "Este projeto é uma plataforma web completa para compartilhamento e gerenciamento de receitas, desenvolvida como trabalho de conclusão de disciplina. O sistema implementa uma arquitetura full-stack robusta, focada na separação clara de responsabilidades entre o cliente e o servidor.\r # 💻 Tecnologias\r Front-end: HTML5, CSS3 e JavaScript (Vanilla) para uma interface de usuário dinâmica e responsiva.\r Back-end: Node.js com framework Express.js, servindo como uma API RESTful para a lógica de negócios.\r Banco de Dados: MySQL, utilizando um modelo de dados abrangente para receitas, ingredientes, usuários, comentários e autenticação segura.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikara/AEO--Tudo-Gostoso.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikara/AEO--Tudo-Gostoso/issues"
+  },
+  "homepage": "https://github.com/nikara/AEO--Tudo-Gostoso#readme",
+  "dependencies": {
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
