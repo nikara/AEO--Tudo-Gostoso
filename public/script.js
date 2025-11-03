@@ -40,5 +40,46 @@ async function  adicionarTarefa() {
     
     if(!titulo) return;
 
+    try{
+        await fetch(API_URL,{
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({titulo:titulo})
+        });
     
+        input.value = '';
+        buscarTarefas();
+    }catch(error){
+        console.error('Erro ao adicionar tarefa:', error);
+    }
 }
+
+async function toggleConcluida(id,concluidaAtual) {
+    try{
+        await fetch(`${API_URL}/${id}`,{
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({concluida: !concluidaAtual})
+        });
+        buscarTarefas();
+    }catch (error){
+        console.error('Erro ao atualizar tarefa:',error);
+    }
+}
+
+async function deletarTarefa(id) {
+    try{
+        await fetch(`${API_URL}/${id}`,{
+            method: 'DELETE'
+        });
+        buscarTarefas();
+    }catch (error){
+        console.error('Erro ao deletar tarefa:',error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded',buscarTarefas);

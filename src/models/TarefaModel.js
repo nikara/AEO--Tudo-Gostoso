@@ -8,7 +8,7 @@ const TarefaSchema = new mongoose.Schema({
     },
     concluida:{
         type: Boolean,
-        default: false;
+        default: false
     },
     criadoEm:{
         type: Date,
