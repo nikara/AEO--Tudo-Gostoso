@@ -15,7 +15,16 @@ function initDB(){
     idreceita INTEGER PRIMARY KEY AUTOINCREMENT,
     titulo TEXT NOT NULL,
     descricao TEXT,
-    imagem TEXT); 
+    imagem TEXT,
+    iddificuldade INTEGER,
+    idusuario INTEGER,
+    idpreparo INTEGER,
+    idcusto INTEGER,
+    FOREIGN KEY (iddificuldade) REFERENCES dificuldade (iddificuldade),
+    FOREIGN KEY (idusuario) REFERENCES usuario (idusuario),
+    FOREIGN KEY (idpreparo) REFERENCES preparo (idpreparo),
+    FOREIGN KEY (idcusto) REFERENCES custo (idcusto)
+    ); 
     
     CREATE TABLE IF NOT EXISTS dificuldade(
     iddificuldade INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,7 +45,7 @@ function initDB(){
     nome TEXT NOT NULL,
     email TEXT NOT NULL,
     data_nascimento INTEGER NOT NULL,
-    cep INTERGER,
+    cep INTEGER,
     genero INTEGER,
     senha TEXT NOT NULL,
     salt TEXT,
@@ -47,9 +56,14 @@ function initDB(){
     idcomentario INTEGER PRIMARY KEY AUTOINCREMENT,
     comentario TEXT,
     nota REAL,
-    datacomentario INTEGER);
+    datacomentario INTEGER,
+    receita_idreceita INTEGER,
+    usuario_idusuario INTEGER,
+    FOREIGN KEY (receita_idreceita) REFERENCES receita (idreceita),
+    FOREIGN KEY (usuario_idusuario) REFERENCES usuario (idusuario)
+    );
 
-    CREATE TABLE IF NOT EXISTS refeixao(
+    CREATE TABLE IF NOT EXISTS refeicao(
     idrefeicao INTEGER PRIMARY KEY AUTOINCREMENT,
     refeicao TEXT,
     ativo INTEGER);
@@ -72,10 +86,6 @@ function initDB(){
     idingrediente INTEGER PRIMARY KEY AUTOINCREMENT,
     ingrediente TEXT);
 
-    CREATE TABLE IF NOT EXISTS dificuldade(
-    iddificuldade INTEGER PRIMARY KEY AUTOINCREMENT,
-    dificuldade TEXT);
-
     CREATE TABLE IF NOT EXISTS categoria_receita(
     receita_idreceita INTEGER,
     categoria_idcategoria INTEGER,
@@ -87,7 +97,7 @@ function initDB(){
     CREATE TABLE IF NOT EXISTS refeica_receita(
     receita_idreceita INTEGER,
     refeicao_idrefeicao INTEGER,
-    PRIMARY KEY (receita_idreceita,refeicao_idrefeicao)
+    PRIMARY KEY (receita_idreceita,refeicao_idrefeicao),
     FOREIGN KEY (receita_idreceita) REFERENCES receita (idreceita),
     FOREIGN KEY (refeicao_idrefeicao) REFERENCES refeicao (idrefeicao));
 
@@ -96,7 +106,7 @@ function initDB(){
     utensilio_idutensilio INTEGER,
     PRIMARY KEY(receita_idreceita,utensilio_idutensilio),
     FOREIGN KEY (receita_idreceita) REFERENCES receita (idreceita),
-    FOREIGN KEY (utensilio_idutensilio) REFERENCES utensilio (idutesilio));
+    FOREIGN KEY (utensilio_idutensilio) REFERENCES utensilio (idutensilio));
 
     CREATE TABLE IF NOT EXISTS cozinha_receita(
     cozinha_idcozinha INTEGER,
