@@ -10,6 +10,8 @@ const tarefaRoutes = require('./src/routes/tarefaRoutes');
 
 const receitaRoutes = require('./src/routes/receitaRoutes');
 
+const usuarioRoutes = require('./src/routes/usuarioRoutes');
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -19,6 +21,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/api/tarefas',tarefaRoutes);
 
 app.use('/api/receitas',receitaRoutes);
+
+app.use('/api/usuarios',usuarioRoutes);
 
 app.get('/',(req,res) => {
     res.send('Servidor Node.js + Express rodando com sucesso!');

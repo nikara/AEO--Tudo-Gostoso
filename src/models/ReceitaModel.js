@@ -20,7 +20,7 @@ exports.create = (titulo,descriacao,iddificuldade,idusuario) =>{
     const stmt = db.prepare('INSERT INTO receita (titulo,descricao,iddificuldade,idusuario) VALUES (?,?,?,?)');
     const info = stmt.run(titulo,descriacao,iddificuldade,idusuario);
     return info.lastInsertRowid;
-}
+};
 
 exports.findyId = (id) => {
     const  sql = `
@@ -34,4 +34,4 @@ exports.findyId = (id) => {
     WHERE r.idreceita = ?`;
 
     return db.prepare(sql).get(id);
-}
+};
