@@ -6,10 +6,10 @@ exports.findAll = () =>{
     SELECT
     r.idreceita,
     r.titulo,
-    r.descriacao,
+    r.descricao,
     d.dificuldade AS nome_dificuldade
     FROM receita r 
-    JOIN dificuldade d ON r.idificuldade = d.iddificuldade
+    JOIN dificuldade d ON r.iddificuldade = d.iddificuldade
     ORDER BY r.idreceita DESC
     `;
     

@@ -117,7 +117,31 @@ function initDB(){
     );
     `
     db.exec(sql);
-    console.log('Banco de dados SQLite inicializado e tabela "tarefas" verificada.');
+    
+    // Populando as tabelas
+
+    // Tabela dificuldade
+
+    const countDificuldade = db.prepare('SELECT COUNT(*) FROM dificuldade').get();
+    if(countDificuldade['COUNT(*)'] === 0){
+        db.exec(`
+            INSERT INTO dificuldade (dificuldade) VALUES ('Fácil');
+            INSERT INTO dificuldade (dificuldade) VALUES ('Médio');
+            INSERT INTO dificuldade (dificuldade) VALUES ('Difícil');
+            `);
+        console.log('Dados iniciais inseridos na tabela "dificuldade".');
+    }
+
+    const countUser = db.prepare('SELECT COUNT(*) FROM usuario').get();
+    if(countUser['COUNT(*)'] === 0){
+        db.exec(`
+            INSERT INTO usuario(nome,email,data_nascimento,senha,inscrito)
+            VALUES ('UsuarioTestes','testes@exemplo.com',1990,'senha_hash_teste',1);`
+        );
+
+        console.log('Usuário de teste inserido na tabela "usuario".');
+    }
+
 }
 
 initDB();
