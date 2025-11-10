@@ -19,3 +19,4 @@ exports.delete = (id) => {
     const stmt = db.prepare('DELETE FROM tarefas WHERE id = ?');
     stmt.run(id);
 };
+

@@ -115,10 +115,7 @@ function initDB(){
     FOREIGN KEY (receita_idreceita) REFERENCES receita (idreceita),
     FOREIGN KEY (cozinha_idcozinha) REFERENCES cozinha (idcozinha)
     );
-
-
     `
-
     db.exec(sql);
     console.log('Banco de dados SQLite inicializado e tabela "tarefas" verificada.');
 }
