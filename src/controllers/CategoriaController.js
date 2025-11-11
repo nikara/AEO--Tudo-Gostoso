@@ -3,10 +3,10 @@ const CategoriaModel = require('../models/categoriaModel');
 exports.listarCategoria = (req,res) =>{
     try{
         const categorias = CategoriaModel.findAll();
-        const categoriaFormatadas = categorias.map(t =>({
-            id: t.idcategiria,
-            categoria: t.categoria,
-            ativo: t.ativo
+        const categoriaFormatadas = categorias.map(c =>({
+            idcategoria: c.idcategoria,
+            categoria: c.categoria,
+            ativo: c.ativo
         }));
         res.json(categoriaFormatadas);
     }catch(error){

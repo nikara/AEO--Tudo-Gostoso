@@ -12,7 +12,9 @@ const receitaRoutes = require('./src/routes/receitaRoutes');
 
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
 
-const categoriaRoutes = require('./src/routes/categoriaRoutes')
+const categoriaRoutes = require('./src/routes/categoriaRoutes');
+
+const refeicaoRoutes = require('./src/routes/refeicaoRoutes');
 
 const PORT = process.env.PORT || 3000;
 
@@ -27,6 +29,8 @@ app.use('/api/receitas',receitaRoutes);
 app.use('/api/usuarios',usuarioRoutes);
 
 app.use('/api/categorias',categoriaRoutes);
+
+app.use('/api/refeicao',refeicaoRoutes);
 
 app.get('/',(req,res) => {
     res.send('Servidor Node.js + Express rodando com sucesso!');
