@@ -12,6 +12,8 @@ const receitaRoutes = require('./src/routes/receitaRoutes');
 
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
 
+const categoriaRoutes = require('./src/routes/categoriaRoutes')
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -24,10 +26,12 @@ app.use('/api/receitas',receitaRoutes);
 
 app.use('/api/usuarios',usuarioRoutes);
 
+app.use('/api/categorias',categoriaRoutes);
+
 app.get('/',(req,res) => {
     res.send('Servidor Node.js + Express rodando com sucesso!');
 });
 
 app.listen(PORT,() => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
-})
+});
