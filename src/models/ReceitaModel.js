@@ -22,7 +22,22 @@ exports.create = (titulo,descriacao,iddificuldade,idusuario) =>{
     return info.lastInsertRowid;
 };
 
-exports.findyId = (id) => {
+exports.updateTitulo = (id,titulo) =>{
+    const stmt = db.prepare('UPDATE receita SET titulo = ? WHERE idreceita = ?');
+    stmt.run(titulo,id);
+};
+
+exports.updateDescricao = (id,descricao) =>{
+    const stmt = db.prepare('UPDATE receita SET descricao = ? WHERE idreceita =?');
+    stmt.run(descricao,id);
+}
+
+exports.delete = (id) =>{
+    const stmt = db.prepare('DELETE FROM receita WHERE idreceita = ?');
+    stmt.run(id);
+}
+
+exports.findId = (id) => {
     const  sql = `
     SELECT
     r.idreceita,

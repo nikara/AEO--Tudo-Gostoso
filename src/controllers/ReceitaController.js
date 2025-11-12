@@ -24,3 +24,38 @@ exports.criarReceita = (req,res) =>{
         res.status(400).json({mensagem:'Erro ao criar receita. Verifique se os IDs de dificuldade e usuário existem:' + error.message});
     }
 };
+
+exports.atualizarTitulo = (req,res) =>{
+    const {titulo} = req.body;
+    const id = req.params.id;
+
+    try{
+        ReceitaModel.updateTitulo(id,titulo);
+        res.json({mensagem: 'Titulo atualizado com sucesso.'});
+    }catch(error){
+        res.status(400).json({mensagem: 'Erro ao atualizar titulo' + error.message});
+    }
+};
+
+exports.atualizarDescricao = (req,res) =>{
+    const {descricao} = req.body;
+    const id = req.params.id;
+
+    try{
+        ReceitaModel.updateDescricao(id,descricao);
+        res.json({mensagem: 'Descricao atualizada com sucesso.'});
+    }catch(error){
+        res.status(400).json({mensagem: 'Erro ao atualizar descricao' + error.message});
+    }
+};
+
+exports.deletarReceita = (req,res) =>{
+    const id = req.params.id;
+
+    try{
+        ReceitaModel.delete(id);
+        res.json({mensagem: 'Receita apaga'});
+    }catch(error){
+        res.status(400).json({mensagem:'Erro ao apagar receita ' + error.message});
+    }
+}
