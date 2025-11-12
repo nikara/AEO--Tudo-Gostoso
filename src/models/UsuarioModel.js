@@ -27,6 +27,16 @@ exports.create = (nome,email,data_nascimento,senha,inscrito) =>{
     
 };
 
+exports.updateUsuario = (nome,email,data_nascimento,senha,id) =>{
+  const stmt = db.prepare('UPDATE usuario SET nome = ?, email = ?, data_nascimento = ?, senha = ? WHERE idusuario = ?');
+  stmt.run(nome,email,data_nascimento,senha,id);
+};
+
+exports.delete = (id) =>{
+  const stmt = db.prepare('DELETE FROM usuario WHERE idusuario = ?');
+  stmt.run(id);
+}
+
 exports.findById = (id) =>{
     const sql =`
     SELECT 

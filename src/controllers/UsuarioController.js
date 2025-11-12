@@ -25,3 +25,28 @@ exports.CriarUsuario = (req,res) =>{
         res.status(401).json({mensagem:'Erro ao Criar usuario:'+ error.message});
     }
 };
+
+exports.atualizarUsuario = (req,res) =>{
+
+    const {nome,email,data_nascimento,senha} = req.body;
+    const id = req.params.id;
+
+    try{
+        UsuarioModel.updateUsuario(id,nome,email,data_nascimento,senha);
+        res.json({mensagem: 'Usuario atualizado.'});
+    }catch(error){
+        res.status(400).json({mensagem: 'Erro ao atualizar usuario' + error+message});
+    }
+
+};
+
+exports.DeletarUsuario = (req,res) =>{
+    const id = req.params.id;
+
+    try{
+        UsuarioModel.delete(id);
+        res.json({mensagem: 'Usuario deletado.'});
+    }catch(error){
+        res.status(500).json({mensagem: 'Erro ao deletar ' + error.message});
+    }
+};
